@@ -61,6 +61,12 @@ module Enumerable
     my_each { |elem| arg = yield(arg, elem) }
     arg
   end
+
+  def my_map
+    temp = []
+    my_each { |elem| temp << yield(elem) }
+    temp
+  end
 end
 
 # You will first have to define my_each
