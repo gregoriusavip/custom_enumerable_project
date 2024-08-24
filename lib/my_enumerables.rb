@@ -45,6 +45,16 @@ module Enumerable
     end
     counter
   end
+
+  def my_each_with_index(*args)
+    return to_enum unless block_given?
+    index = 0
+    my_each do |elem|
+      yield(elem, index)
+      index += 1
+    end
+    self
+  end
 end
 
 # You will first have to define my_each
