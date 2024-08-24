@@ -72,6 +72,12 @@ module Enumerable
     my_each { |elem| return false if yield(elem) }
     true
   end
+
+  def my_select
+    temp = []
+    my_each { |elem| temp << elem if yield(elem) }
+    temp
+  end
 end
 
 # You will first have to define my_each
