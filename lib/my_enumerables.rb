@@ -33,6 +33,18 @@ module Enumerable
     my_each { |elem| return true if yield(elem) }
     false
   end
+
+  def my_count(arg = (no_var = true; nil))
+    counter = 0  
+    if !(arg.nil? && no_var)
+      my_each { |elem| counter += 1 if elem == arg }
+    elsif block_given?
+      my_each { |elem| counter += 1 if yield(elem) }
+    else
+      my_each { counter += 1 }
+    end
+    counter
+  end
 end
 
 # You will first have to define my_each
