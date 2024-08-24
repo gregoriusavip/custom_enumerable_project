@@ -16,6 +16,23 @@ module Enumerable
     my_each { |elem| return false unless yield(elem) }
     true
   end
+
+  def my_any?(arg = (no_var = true; nil))
+    return false if length.eql?(0)
+
+    unless arg.nil? && no_var
+      my_each { |elem| return true if arg === elem }
+      return false
+    end
+
+    unless block_given?
+      my_each { |elem| return true unless !!elem }
+      return false
+    end
+
+    my_each { |elem| return true if yield(elem) }
+    false
+  end
 end
 
 # You will first have to define my_each
