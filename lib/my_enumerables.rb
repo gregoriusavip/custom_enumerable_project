@@ -55,6 +55,12 @@ module Enumerable
     end
     self
   end
+
+  def my_inject(arg)
+    # requires an argument
+    my_each { |elem| arg = yield(arg, elem) }
+    arg
+  end
 end
 
 # You will first have to define my_each
